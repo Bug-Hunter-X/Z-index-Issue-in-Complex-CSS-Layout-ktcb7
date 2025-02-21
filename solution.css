@@ -1,0 +1,14 @@
+The issue stems from the interaction of `z-index` with the stacking context.  In the original CSS, the parent elements lack a defined stacking context, so the `z-index` is not correctly applied across parent-child relationships. 
+
+The solution involves creating a stacking context for the parent element using properties like `position: relative` and ensuring the z-index value is correctly set at the appropriate level within the stacking context. In the updated `solution.css`, this has been implemented, resolving the layering problem.
+
+```css
+/* solution.css */
+.parent {
+  position: relative; /* Creates stacking context */
+}
+.element-on-top {
+  z-index: 10;
+  position: relative;
+}
+```
